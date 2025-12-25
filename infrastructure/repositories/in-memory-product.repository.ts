@@ -146,7 +146,14 @@ export class InMemoryProductRepository implements IProductRepository {
         throw new Error("Error buying product");
       }
       const updatedProduct = await request.json();
-      return updatedProduct;
+
+      const product = Product.create(
+        updatedProduct.id,
+        updatedProduct.name,
+        updatedProduct.price,
+        updatedProduct.quantity
+      );
+      return product;
     } catch (error) {
       throw new Error("Error buying product");
     }
@@ -168,7 +175,14 @@ export class InMemoryProductRepository implements IProductRepository {
         throw new Error("Error selling product");
       }
       const updatedProduct = await request.json();
-      return updatedProduct;
+
+      const product = Product.create(
+        updatedProduct.id,
+        updatedProduct.name,
+        updatedProduct.price,
+        updatedProduct.quantity
+      );
+      return product;
     } catch (error) {
       throw new Error("Error selling product");
     }
